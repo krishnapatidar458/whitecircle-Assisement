@@ -1,7 +1,6 @@
-
 import { useState } from "react";
 import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,37 +20,22 @@ const Header = () => {
           <div className="text-2xl font-bold text-primary">
             Whitecircle Group
           </div>
-          
+
           {/* Desktop Navigation */}
           <nav className="hidden md:flex space-x-8">
-            <button 
-              onClick={() => scrollToSection('home')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Home
-            </button>
-            <button 
-              onClick={() => scrollToSection('services')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Services
-            </button>
-            <button 
-              onClick={() => scrollToSection('tech-stack')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Tech Stack
-            </button>
-            <button 
-              onClick={() => scrollToSection('contact')}
-              className="text-foreground hover:text-primary transition-colors"
-            >
-              Contact
-            </button>
+            {["home", "services", "tech-stack", "contact"].map((section) => (
+              <button
+                key={section}
+                onClick={() => scrollToSection(section)}
+                className="text-foreground hover:text-primary transition-colors"
+              >
+                {section.charAt(0).toUpperCase() + section.slice(1)}
+              </button>
+            ))}
           </nav>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="md:hidden"
           >
@@ -59,37 +43,30 @@ const Header = () => {
           </button>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <nav className="md:hidden mt-4 pb-4 border-t border-border">
-            <div className="flex flex-col space-y-4 pt-4">
-              <button 
-                onClick={() => scrollToSection('home')}
-                className="text-left text-foreground hover:text-primary transition-colors"
-              >
-                Home
-              </button>
-              <button 
-                onClick={() => scrollToSection('services')}
-                className="text-left text-foreground hover:text-primary transition-colors"
-              >
-                Services
-              </button>
-              <button 
-                onClick={() => scrollToSection('tech-stack')}
-                className="text-left text-foreground hover:text-primary transition-colors"
-              >
-                Tech Stack
-              </button>
-              <button 
-                onClick={() => scrollToSection('contact')}
-                className="text-left text-foreground hover:text-primary transition-colors"
-              >
-                Contact
-              </button>
-            </div>
-          </nav>
-        )}
+        {/* Animated Mobile Navigation */}
+        <AnimatePresence>
+          {isMenuOpen && (
+            <motion.nav
+              className="md:hidden border-t border-border overflow-hidden"
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <div className="flex flex-col space-y-4 pt-4 pb-4">
+                {["home", "services", "tech-stack", "contact"].map((section) => (
+                  <button
+                    key={section}
+                    onClick={() => scrollToSection(section)}
+                    className="text-left text-foreground hover:text-primary transition-colors"
+                  >
+                    {section.charAt(0).toUpperCase() + section.slice(1)}
+                  </button>
+                ))}
+              </div>
+            </motion.nav>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

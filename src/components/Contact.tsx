@@ -54,7 +54,7 @@ const Contact = () => {
     {
       icon: MapPin,
       title: "Office Location",
-      content: "Mumbai, India",
+      content: "Headquarter Swastik Galaxy A Block, 1st Floor, Near Indra Square, Shahdol, MP",
       color: "bg-gradient-to-br from-purple-500/10 to-purple-600/20",
       iconColor: "text-purple-600"
     }

@@ -40,14 +40,14 @@ const Contact = () => {
     {
       icon: Mail,
       title: "Email Us",
-      content: "hello@whitecirclegroup.com",
+      content: "hr@whitecirclegroup.in",
       color: "bg-gradient-to-br from-blue-500/10 to-blue-600/20",
       iconColor: "text-blue-600"
     },
     {
       icon: Phone,
       title: "Call Us",
-      content: "+91 98765 43210",
+      content: "+91 XXXXXXXXXX",
       color: "bg-gradient-to-br from-green-500/10 to-green-600/20",
       iconColor: "text-green-600"
     },

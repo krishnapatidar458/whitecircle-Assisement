@@ -64,9 +64,9 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact Info</h4>
             <div className="space-y-2 text-primary-foreground/90">
-              <p>hello@whitecirclegroup.com</p>
-              <p>+91 98765 43210</p>
-              <p>Mumbai, India</p>
+              <p>hr@whitecirclegroup.in</p>
+              <p>+91 XXXXXXXXXX</p>
+              <p>Headquarter Swastik Galaxy A Block, 1st Floor, Near Indra Square, Shahdol, MP</p>
             </div>
             
             {/* Social Media Icons */}
